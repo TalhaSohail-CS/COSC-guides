@@ -216,9 +216,11 @@ Memoization Solution:
 // The memoization visualization is just the starting point because all D and Rs are duplicates lol
 const gridTraveler = (m, n, memo={}) => {
   const key = m + ',' + n;
+  if (key in memo) return memo[key];
   if(m === 1 && n == 1) return 1;
   if(m === 0 || n === 0) return 0;
-  return gridTraveler(m - 1, n) + gridTraveler(m , n - 1);
+  memo[key] = gridTraveler(m - 1, n, memo) + gridTraveler(m , n - 1. memo);
+  return memo[key];
 ```
 Tabulation Visualization:
 ```
